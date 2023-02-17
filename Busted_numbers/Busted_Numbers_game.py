@@ -20,10 +20,8 @@ def main():
 
         if guess > num:
             print("Too high!")
-            rounds + 1
         elif guess < num:
             print("Too low!")
-            rounds + 1
         else:
             print("Correct!")
 
