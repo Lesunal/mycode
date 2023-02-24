@@ -36,7 +36,7 @@ def main():
                     'Objects':{
                         'Object1':{
                             'Object_Key': 'picture',
-                            'Object_Desc':["A tattered portrait of a wolf", "hangs on the wall."],
+                            'Object_Desc':["A tattered portrait of a wolf hangs on the wall."],
                             'Interact_Type':['standard'],
                             'Interact_Desc':['You carefully lift the portrait off the wall and stowe it for later.'],
                             'Interact_Effect': ["inventory.append(Room_dict['Room1']['Objects']['Object1']['Object_Key']) ; del(Room_dict['Room1']['Objects']['Object1'])"]
@@ -147,7 +147,7 @@ def main():
             if Action == 'Reexamine':
                 Description_string = Room_dict[Location]['Location_Desc'][0]
                 for objects in Room_dict[Location]['Objects']:
-                    Description_string.append(Room_dict[Location]['Objects'][objects]['Object_Desc']) 
+                    Description_string += Room_dict[Location]['Objects'][objects]['Object_Desc'][0] 
             
             # Move Action will state the current room's Move description for the provided Direction
             if Action =='Move':
@@ -157,12 +157,14 @@ def main():
             if Action == 'Interact':
                 Interact_num = Room_dict[Location]['Objects'][Object]['Interact_Type'].index(Item)
                 Description_string = Room_dict[Location][Object]['Interact_Desc'][Interact_num]
-
-
+    
             Narrate_list.append(Description_string)
-            return Narrate_list
-
-  
+            return Narrate_list,
+    
+    # Should produce an initial Narration
+    Narrate('Reexamine', Location,H,H,H)
+    print(Narrate_list)
+    window['-Narrate-'].Update(Narrate_list)
 
     
 

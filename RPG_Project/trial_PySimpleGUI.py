@@ -21,6 +21,8 @@ while True:
     # Output a message to the window
     window['-OUTPUT-'].update('Hello ' + values['-INPUT-'] + "! Thanks for trying PySimpleGUI")
     Narrate_list.append(values['-INPUT-'])
+    print(values)
+    print(Narrate_list)
     window['-Narrate-'].Update(Narrate_list)
 
 # Finish up by removing from the screen
